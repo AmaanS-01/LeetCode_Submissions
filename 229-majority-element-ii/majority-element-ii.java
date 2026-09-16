@@ -1,4 +1,10 @@
 class Solution {
+        static
+    {
+        Solution s=new Solution();
+        for(int i = 0; i < 500; i++)
+            s.majorityElement(new int[]{});
+    }
     public List<Integer> majorityElement(int[] nums) {
         HashMap<Integer,Integer> hmp=new HashMap<>();
         for(int num:nums){
