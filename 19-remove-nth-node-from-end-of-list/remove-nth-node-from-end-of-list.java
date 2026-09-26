@@ -18,14 +18,16 @@ class Solution {
         }
         int a=size-n;
         temp=head;
-        ListNode prev=null;
         if(a==0){
             return head.next;
         }
-        while(a>0){
+        int i=0;
+        ListNode prev=null;
+        temp=head;
+        while(i<a){
             prev=temp;
             temp=temp.next;
-            --a;
+            i++;
         }
         prev.next=temp.next;
         return head;
