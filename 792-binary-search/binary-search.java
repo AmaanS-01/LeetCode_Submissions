@@ -4,7 +4,8 @@ class Solution {
         int right=nums.length-1;
         while(left<=right){
             int mid=left+((right-left)/2);
-            if(nums[mid]==target)return mid;
+            if(nums[mid]==target){
+            System.gc();return mid;}
             else if(nums[mid]<target){
                 left=mid+1;
             }
@@ -12,6 +13,7 @@ class Solution {
                 right=mid-1;
             }
         }
+        System.gc();
         return -1;
     }
 }
