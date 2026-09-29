@@ -15,7 +15,7 @@ class Solution {
         ListNode t2=head.next;
         ListNode head1=t1;
         ListNode head2=t2;
-        while(t1.next!=null&&t2.next!=null){
+        while(t2!=null&&t2.next!=null){
             t1.next=t1.next.next;
             t2.next=t2.next.next;
             t1=t1.next;
