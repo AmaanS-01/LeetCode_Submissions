@@ -29,10 +29,18 @@ class Solution {
         return dummy.next;
     } 
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode result=null;
-        for(int i=0;i<lists.length;i++){
-            result=merge(result,lists[i]);
+        if(lists.length==0)return null;
+       while (lists.length>1) {
+            int n=(lists.length+1)/2;
+            ListNode[] res=new ListNode[n];
+            for (int i=0;i<lists.length;i += 2){
+                if(i+1<lists.length)
+                    res[i/2]=merge(lists[i],lists[i +1]);
+                else
+                    res[i/2]=lists[i];
+            }
+            lists=res;
         }
-        return result;
-    }
+        return lists[0];
+}
 }
