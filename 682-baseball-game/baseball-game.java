@@ -1,29 +1,29 @@
 class Solution {
     public int calPoints(String[] operations) {
-        List<Integer> record = new ArrayList<>();
-        for (String op : operations) {
-            switch (op) {
-                case "+":
-                    int n = record.size();
-                    int sumLastTwo = record.get(n - 1) + record.get(n - 2);
-                    record.add(sumLastTwo);
-                    break;
-                case "D":
-                    int doubleLast = record.get(record.size() - 1) * 2;
-                    record.add(doubleLast);
-                    break;
-                case "C":
-                    record.remove(record.size() - 1);
-                    break;
-                default:
-                    record.add(Integer.parseInt(op));
-                    break;
+        Stack<Integer> st=new Stack<>();
+        for(String s:operations){
+            if(s.equals("+")){
+                int a=st.pop();
+                int b=st.peek();
+                st.push(a);
+                st.push(a+b);
+            }
+            else if(s.equals("D")){
+                int a=st.peek();
+                st.push(2*a);
+            }
+            else if(s.equals("C")){
+                st.pop();
+            }
+            else{
+                int a =Integer.parseInt(s);
+                st.push(a);
             }
         }
-        int total = 0;
-        for (int score : record) {
-            total += score;
+        int sum=0;
+        for(int a:st){
+            sum+=a;
         }
-        return total;
+        return sum;
     }
 }
